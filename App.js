@@ -1,31 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import * as Font from 'expo-font'
-import  AppLoading  from 'expo-app-loading'
+import { useFonts } from 'expo-font'
+import { useCallback } from 'react'
+import React from 'react'
+import { StyleSheet, View, Text } from 'react-native'
+import * as SplashScreen from 'expo-splash-screen'
 
-const getFonts = () =>{ 
-  return Font.loadAsync({
-    'nunito': require('./assets/fonts/Nunito-Bold.ttf')
+SplashScreen.preventAutoHideAsync()
+
+function App() {
+  const [fontsLoaded] = useFonts({
+    'font' : require('./assets/fonts/IndieFlower-Regular.ttf')
   })
+
+  const loadFont = useCallback(async() => {
+      if(fontsLoaded)
+        await SplashScreen.hideAsync()
+    },
+    [fontsLoaded],
+  )
+  if(!fontsLoaded)
+    return null;
+  
+  return (
+    <View style={styles.container}  onLayout={loadFont}>
+      <Text style={styles.text}>Hello World</Text>
+    </View>
+  )
 }
-export default function App() {
-  const [fontLooaded, setFontLooaded] = useState(false)
 
+export default App
 
-  if(fontLooaded)
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    )
-  else
-    return (
-    <AppLoading startAsync={getFonts} onFinish={()=>{setFontLooaded(true)}} onError={()=>{console.log();}}/>
-    )
-
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -35,6 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontFamily: 'nunito'
+    fontFamily: 'font'
   }
 });
