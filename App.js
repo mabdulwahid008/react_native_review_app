@@ -12,7 +12,7 @@ function App() {
   
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="ReviewDetail">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="ReviewDetail">
             {(props) => <ReviewDetails {...props} data={data}/>}

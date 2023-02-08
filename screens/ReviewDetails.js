@@ -1,13 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Button } from 'react-native'
 
 
-function ReviewDetails({ data}) {
-  console.log(data);
+function ReviewDetails({ data, navigation}) {
   return (
     <View style={styles.container}>
         <Text>This is ReviewDetails</Text>
-        <Text>{data}</Text>
+        <Button title='Home' onPress={()=> navigation.navigate('Home')}/>
     </View>
   )
 }
@@ -15,7 +14,8 @@ function ReviewDetails({ data}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: '#fff'
     }
 })
 
