@@ -1,43 +1,23 @@
-import { useFonts } from 'expo-font'
-import { useCallback } from 'react'
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-import * as SplashScreen from 'expo-splash-screen'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Home from './screens/Home'
 
-SplashScreen.preventAutoHideAsync()
+const Stack = createNativeStackNavigator()
+
 
 function App() {
-  const [fontsLoaded] = useFonts({
-    'font' : require('./assets/fonts/IndieFlower-Regular.ttf')
-  })
-
-  const loadFont = useCallback(async() => {
-      if(fontsLoaded)
-        await SplashScreen.hideAsync()
-    },
-    [fontsLoaded],
-  )
-  if(!fontsLoaded)
-    return null;
   
   return (
-    <View style={styles.container}  onLayout={loadFont}>
-      <Text style={styles.text}>Hello World</Text>
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={<Home />}/>
+        </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
 export default App
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontFamily: 'font'
-  }
-});
+
