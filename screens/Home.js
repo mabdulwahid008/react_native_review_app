@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 
-function Home({ navigation }) {
+function Home({route, navigation }) {
+  console.log(route);
   return (
     <View style={styles.container}>
         <Text>This is Home Screen</Text>
