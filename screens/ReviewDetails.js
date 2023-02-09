@@ -6,7 +6,7 @@ function ReviewDetails({ data, navigation}) {
   return (
     <View style={styles.container}>
         <Text>This is ReviewDetails</Text>
-        <Button title='Home' onPress={()=> navigation.navigate('Home', {itemId: 5, other: "hello"})}/>
+        <Button title='Home' onPress={()=> navigation.navigate('Home', {itemId: 6, other: "hello"})}/>
     </View>
   )
 }
