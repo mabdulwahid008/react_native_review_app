@@ -4,7 +4,6 @@ import { StyleSheet, View, Text, Button } from 'react-native'
 function Home({route, navigation }) {
   useEffect(() => {
     console.log(route.params);
-   
     
   }, [route.params?.itemId])
   
@@ -12,6 +11,7 @@ function Home({route, navigation }) {
     <View style={styles.container}>
         <Text>This is Home Screen</Text>
         <Button title='ReviewDetail' onPress={()=> navigation.navigate('ReviewDetail',  {itemId: 5, other: "hello"})}/>
+        {/* <Button title='update' onPress={()=> navigation.setOptions({title: 'updated'})}/> */}
     </View>
   )
 }

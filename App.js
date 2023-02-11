@@ -1,28 +1,19 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Home from './screens/Home'
-import ReviewDetails from './screens/ReviewDetails'
-
-const Stack = createNativeStackNavigator()
-
+import {StyleSheet, View, Text} from 'react-native'
 
 function App() {
-  const data = "hello wahid"
-  
   return (
-    <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home}/>
-          <Stack.Screen name="ReviewDetail">
-            {(props) => <ReviewDetails {...props} data={data}/>}
-          </Stack.Screen>
-        </Stack.Navigator>
-    </NavigationContainer>
+    <View style={StyleSheet.container}>
+      <Text>Hello World</Text>
+    </View>
   )
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  }
+})
+
 export default App
-
-
-
