@@ -1,22 +1,16 @@
 import React from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { View, Text, Button } from 'react-native'
+import { globalStyles } from '../styles/globalStyles'
 
 
-function ReviewDetails({ data, navigation}) {
+function ReviewDetails({ route, navigation }) {
+  const { title, rating, body } = route.params
   return (
-    <View style={styles.container}>
-        <Text>This is ReviewDetails</Text>
-        <Button title='Home' onPress={()=> navigation.navigate('Home', {itemId: 6, other: "hello"})}/>
+    <View style={globalStyles.container}>
+        <Text style={globalStyles.titleText}>{title}</Text>
+        <Text style={globalStyles.paragraph}>{body}</Text>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#fff'
-    }
-})
 
 export default ReviewDetails

@@ -1,28 +1,28 @@
-import React, { useEffect } from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { globalStyles } from '../styles/globalStyles';
 
-function Home({route, navigation }) {
-  useEffect(() => {
-    console.log(route.params);
-    
-  }, [route.params?.itemId])
-  
+function Home({ navigation }) {
+  const [reviews, setReviews] = useState([
+    { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
+    { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
+    { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
+  ]);
+
   return (
-    <View style={styles.container}>
-        <Text>This is Home Screen</Text>
-        <Button title='ReviewDetail' onPress={()=> navigation.navigate('ReviewDetail',  {itemId: 5, other: "hello"})}/>
-        {/* <Button title='update' onPress={()=> navigation.setOptions({title: 'updated'})}/> */}
+    <View style={globalStyles.container}>
+      <FlatList 
+        data={reviews}
+        renderItem= {({ item }) => {
+         return <TouchableOpacity onPress={()=> navigation.navigate('Review Detail', item)}>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+          </TouchableOpacity>
+        }}
+      />
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#fff'
-    }
-})
 
 export default Home
 

@@ -1,17 +1,19 @@
-import React from 'react'
-import { View, Text} from 'react-native'
-import { globalStyles } from './styles/globalStyles'
+import * as React from 'react';
+import About from './screens/About'
+import HomeStack from './stacks/HomeStack'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
-function App() {
 
-  
+const Drawer = createDrawerNavigator();
+
+export default function App() {
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>Hello World</Text>
-    </View>
-  )
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home" >
+        <Drawer.Screen name="Home" component={HomeStack} />
+        <Drawer.Screen name="About" component={About} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
 }
-
-
-
-export default App
