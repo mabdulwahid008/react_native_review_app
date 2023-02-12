@@ -16,7 +16,7 @@ function HomeStack() {
         backgroundColor: '#eee'
       },
       }}> 
-        <Stack.Screen name="Home" component={Home} options={{title: 'Gamezone'}}/>
+        <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
         <Stack.Screen name="Review Detail" component={ReviewDetails} />
     </Stack.Navigator>
   // </NavigationContainer>
@@ -24,3 +24,4 @@ function HomeStack() {
 }
 
 export default HomeStack
+
