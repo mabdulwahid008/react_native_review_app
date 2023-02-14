@@ -12,7 +12,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home" >
         <Drawer.Screen name="Home" component={HomeStack} options={{title: 'Gamezone'}}/>
-        <Drawer.Screen name="About" component={About} />
+        <Drawer.Screen name="About" component={About} options={{headerTitle: ()=> <Header />}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
