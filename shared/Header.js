@@ -2,10 +2,13 @@ import React from 'react'
 import {StyleSheet, View, Text } from 'react-native'
 import { Entypo } from '@expo/vector-icons'; 
 
-function Header() {
+function Header({ navigation }) {
+    const openDrawer = () => {
+        navigation.openDrawer()
+    }
   return (
     <View style={styles.header}>
-        <Entypo name="menu" size={24} color="black"  style={styles.menuButton}/>
+        <Entypo name="menu" size={24} color="black" onPress={openDrawer}  style={styles.menuButton}/>
         <View>
             <Text style={styles.headerText}>Game Zone</Text>
         </View>
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
     },
     headerText: {
         fontWeight: "bold",
@@ -28,7 +31,8 @@ const styles = StyleSheet.create({
         letterSpacing: 1
     },
     menuButton: {
-        float: "left"
+        position: "absolute",
+        left: 10
     }
 })
 

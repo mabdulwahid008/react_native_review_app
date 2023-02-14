@@ -17,7 +17,7 @@ function HomeStack() {
         backgroundColor: 'white'
       },
       }}> 
-        <Stack.Screen name="Home" component={Home} options={{headerTitle: ()=> <Header />}}/>
+        <Stack.Screen name="Home" component={Home} options={({ navigation })=>({headerTitle: ()=> <Header navigation={navigation}/>})}/>
         <Stack.Screen name="Review Detail" component={ReviewDetails} />
     </Stack.Navigator>
   // </NavigationContainer>
